@@ -84,6 +84,11 @@ output :
 [38765 rows x 2 columns]
 ```
 ## **Group items by each member**
+##### We will group the items purchased by each member into a list format, where each member's purchases are stored together. This list will be used as input for the Apriori algorithm.
+```bash
+member_list = [i[1]['itemDescription'].tolist() for i in list(req_stuff.groupby(['Member_number']))]
+```
+## **Apply the Apriori algorithm**
 ##### We will use the Apriori algorithm to find frequent itemsets and generate association rules based on the specified minimum support, confidence, lift, and rule length.
 ```bash
 rules = apriori(transactions=member_list, min_support=0.002, min_confidence=0.0002, min_lift=3, min_length=2, max_length=2)
