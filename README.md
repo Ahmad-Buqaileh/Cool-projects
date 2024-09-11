@@ -1,2 +1,2 @@
-Welcome, in this repo I will post cool ML and DL projects.
+Welcome, in this repo I will post ML and DL projects.
 Have fun coding!
