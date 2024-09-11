@@ -4,7 +4,7 @@
 
 #### We will start by loading the dataset and inspecting its structure, including checking for data types and understanding the contents.
 
-#### We'll filter and sort the data to focus on relevant fields, such as Member_number and itemDescription, which represent customer transactions.
+#### We'll filter and sort the data to focus on relevant fields, such as *Member_number* and *itemDescription*, which represent customer transactions.
 
 #### We'll group the items purchased by each member into lists, making it easier to analyze patterns in their purchasing behavior.
 
