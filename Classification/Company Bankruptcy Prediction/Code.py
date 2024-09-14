@@ -7,48 +7,32 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split, cross_val_score
 import seaborn as sns
 
-# Load the dataset
 df = pd.read_csv('../DATA/Company Bankruptcy Prediction.csv')
 
-# Feature and label extraction
 X = df.iloc[:, :-1].values
 y = df.iloc[:, -1].values
 
-# Print dataset info
 print(df.head())
 print(df.info())
 print(df.isnull().sum())
 
-# Split the dataset
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-# Feature scaling
 sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-# Train the model
 classifier = LogisticRegression()
 classifier.fit(X_train, y_train)
 
-# Make predictions
 predictions = classifier.predict(X_test)
 
-# Print predictions and actual values
 print(np.concatenate((predictions.reshape(len(predictions), 1), y_test.reshape(len(y_test), 1)), 1))
 
-
-# Cross-validation accuracy
 acc = cross_val_score(estimator=classifier, X=X_train, y=y_train, cv=10)
 print("Cross-Validation Accuracy: {:.2f}%".format(acc.mean() * 100))
 print("Standard Deviation: {:.2f}%".format(acc.std() * 100))
 
-# ROC curve and AUC
-y_prob = classifier.predict_proba(X_test)[:, 1]
-fpr, tpr, thresholds = roc_curve(y_test, y_prob)
-roc_auc = auc(fpr, tpr)
-
-# Confusion Matrix
 print(confusion_matrix(y_test, predictions))
 
 plt.figure(figsize=(8, 6))
@@ -60,7 +44,10 @@ plt.ylabel('True Labels')
 plt.title('Confusion Matrix')
 plt.show()
 
-# ROC Curve
+y_prob = classifier.predict_proba(X_test)[:, 1]
+fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+roc_auc = auc(fpr, tpr)
+
 plt.figure(figsize=(8, 6))
 plt.plot(fpr, tpr, color='darkorange', lw=2, label='ROC curve (area = %0.2f)' % roc_auc)
 plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
