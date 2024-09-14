@@ -1,10 +1,10 @@
 # Project Overview
-#### The dataset used in this project contains financial indicators of companies, with the target label indicating whether a company went bankrupt or not. The dataset includes various financial ratios and indicators across multiple companies, which serve as the features for predicting bankruptcy.
-#### The dataset is loaded and basic exploration is performed to understand the structure, check for missing values, and gain insights.
-#### The data is split into training (80%) and test (20%) sets. A Logistic Regression model is trained on the training set. Logistic regression is a suitable choice for binary classification problems like bankruptcy prediction.
-#### Predictions are made on the test set, and the accuracy of the model is calculated. Cross-validation with 10 folds is performed to assess the model’s stability and performance across different subsets of the data. The confusion matrix is used to visualize the number of correct and incorrect predictions.
-#### A Receiver Operating Characteristic (ROC) curve is plotted, and the Area Under the Curve (AUC) is calculated to measure the model's ability to distinguish between default and non-default companies.
-# First, try doing it on your own. If you struggle with something, you can find .....
+### The dataset used in this project contains financial indicators of companies, with the target label indicating whether a company went bankrupt or not. The dataset includes various financial ratios and indicators across multiple companies, which serve as the features for predicting bankruptcy.
+### The dataset is loaded and basic exploration is performed to understand the structure, check for missing values, and gain insights.
+### The data is split into training (80%) and test (20%) sets. A Logistic Regression model is trained on the training set. Logistic regression is a suitable choice for binary classification problems like bankruptcy prediction.
+### Predictions are made on the test set, and the accuracy of the model is calculated. Cross-validation with 10 folds is performed to assess the model’s stability and performance across different subsets of the data. The confusion matrix is used to visualize the number of correct and incorrect predictions.
+### A Receiver Operating Characteristic (ROC) curve is plotted, and the Area Under the Curve (AUC) is calculated to measure the model's ability to distinguish between default and non-default companies.
+# First, try doing it on your own. If you struggle with something, you can find the steps outlined below.
 ## **Import Necessary Libraries**
 ```bash
 import pandas as pd
