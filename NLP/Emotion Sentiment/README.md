@@ -100,7 +100,7 @@ def user_input(user_text):
     Prediction = classifier.predict(text_tfidf) 
     return Prediction
 ```
-## Take user input and provide a prediction on the sentiment, you can do this part in many ways (0_0)
+## Take user input and provide a prediction on the sentiment. (you can do this part in many ways (0_0))
 ```bash
 input_text = input('Write your text')
 prediction = user_input(input_text)
@@ -199,11 +199,51 @@ def insert_output(User_Input, Result):
     cur.execute('INSERT INTO sentemint(user_text,label) VALUES (%s,%s)', (user_input, Result))
     connection.commit() # I named my table sentemint, with column names user_text and label
 ```
-
-
-
-
-
-
+## Connect to PostgreSQL database
+```bash
+connection = psycopg2.connect(host='localhost',
+                              database='database_name_here',
+                              user='username_here',
+                              password='your_password_here')
+cur = connection.cursor()
+connection.commit()
+```
+## Initialize the model class
+```bash
+trained_model = Model()
+```
+## Streamlit app title and layout
+```bash
+st.title("Emotion Detection")
+st.markdown("<br><br>", unsafe_allow_html=True)
+```
+## Button to trigger emotion analysis
+```bash
+if st.button('Analyze'):
+    if len(user_input) > 24:  # ensure that user input has more than 24 characters
+        if user_input:
+            # predict sentiment using the model and display the result
+            prediction = trained_model.predict(user_input)
+            output = trained_model.get_sentiment_label(prediction)
+            st.write(f"## Emotion: {output}")
+            # save the user input and prediction result in the database
+            insert_output(user_input, output)
+        else:
+            st.markdown("## Please enter some text")
+    else:
+        st.markdown("## Please enter more than 24 characters")
+```
+# Now lets create the database. (again I'm using PostgreSQL)
+## Open the SQL shell and create the DB (DataBase)
+![image](https://github.com/user-attachments/assets/ad913e0a-e6b1-49e9-9a8a-49516f6d67f1)
+## Connect to the newly created DB. ( you can see all of your databases by running \l )
+![image](https://github.com/user-attachments/assets/ec32cf62-54b5-451a-8dc5-89ac38f2426f)
+## Create a new table with column names user_text and label
+![image](https://github.com/user-attachments/assets/2c022a11-214a-4351-8a8f-e53181e4a193)
+## To see values  
+![image](https://github.com/user-attachments/assets/dcf56ee7-171d-4692-9b88-3116a4c48314)
+# At the end everything should look like this 
+![image](https://github.com/user-attachments/assets/7fddebac-6d42-4715-9469-47b24c565965)
+![image](https://github.com/user-attachments/assets/95ae5826-cae7-4c1b-baaf-92813ac94883)
 
 
