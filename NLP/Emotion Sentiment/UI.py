@@ -8,10 +8,10 @@ def insert_output(User_Input, Result):
     connection.commit()
 
 
-connection = psycopg2.connect(host='localhost',
-                              database='emotions',
-                              user='postgres',
-                              password='Crown_Green.BUQBUQ'
+connection = psycopg2.connect(host='localhost', # I used a local host
+                              database='data_base_name_here',
+                              user='user_name_here',
+                              password='you_password_here'
                               )
 cur = connection.cursor()
 connection.commit()
